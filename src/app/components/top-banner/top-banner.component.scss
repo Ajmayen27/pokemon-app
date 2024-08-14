@@ -1,0 +1,61 @@
+@import"../../../styles.scss";
+
+.top-banner {
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary;
+    color: $white;
+
+    h1 {
+        font-size: 40px;
+        letter-spacing: 8px;
+        margin-top: 20px;
+        margin-bottom: 8px;
+    }
+
+    h3 {
+        font-size: 20px;
+        letter-spacing: 3px;
+        font-weight: 500;
+        margin-bottom: 30px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 12px;
+        column-gap: 12px;
+
+        @media screen and (min-width: 768px) {
+            flex-direction: row;
+        }
+
+        input {
+            height: 30px;
+            font-weight: 300px;
+            padding: 4px 12px;
+            border: none;
+            border-radius: 2px;
+        }
+
+        .button {
+            height: 30px;
+            width: 120px;
+            letter-spacing: 2px;
+            background-color: $accent1;
+            color: $black;
+
+            &:hover {
+                background-color: $white;
+            }
+        }
+
+
+    }
+
+}
