@@ -6,17 +6,20 @@ import { AppComponent } from './app.component';
 import { TopBannerComponent } from './components/top-banner/top-banner.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
+import { DetailsPageComponent } from './components/details-page/details-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBannerComponent,
     FooterComponent,
-    PokemonListComponent
+    PokemonListComponent,
+    DetailsPageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule, HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
