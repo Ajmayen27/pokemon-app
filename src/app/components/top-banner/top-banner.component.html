@@ -2,8 +2,8 @@
     <h1>Poke-Wiki</h1>
     <h3>Wikipedia for pokemons</h3>
 
-    <form>
-        <input type="text" placeholder="Type pokemon name" />
+    <form [formGroup]="searchForm" (ngSubmit)="search()">
+        <input type="text" placeholder="Type pokemon name" id="searchterm" formControlName="searchTerm" />
         <button class="button">Search</button>
     </form>
 </div>
