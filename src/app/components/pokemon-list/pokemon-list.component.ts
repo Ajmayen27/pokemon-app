@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PokeApiService } from '../../services/poke-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SharedDataService } from '../../services/shared-data.service';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -12,14 +13,20 @@ export class PokemonListComponent implements OnInit {
   pokemonDetails: any[] = [];
   constructor(private pokeApiService: PokeApiService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private sharedDataService: SharedDataService
   ) { }
 
   ngOnInit(): void {
 
     this.route.queryParamMap.subscribe((queryParamMap: any) => {
-      this.setCurrentPageNo(queryParamMap);
-      this.loadAllPokemonDetails();
+      if (queryParamMap.has('pokemon')) {
+        this.loadSinglePokemonDetails(queryParamMap.get('pokemon'))
+      }
+      else {
+        this.setCurrentPageNo(queryParamMap);
+        this.loadAllPokemonDetails();
+      }
     });
 
 
@@ -36,10 +43,31 @@ export class PokemonListComponent implements OnInit {
     });
   }
 
+  loadSinglePokemonDetails(name: string) {
+    this.pokeApiService
+      .fetchIndividualPokemonDetailsByName(name)
+      .subscribe({
+        next: (successResponse) =>
+          this.pokemonDetails.splice(
+            0,
+            this.pokemonDetails.length,
+            successResponse),
+        error: (errorResponse) => console.error(errorResponse),
+      });
+  }
+
   loadPreviousPage(): void {
     this.router.navigate(['/pokemon-list'], {
       queryParams: { page: --this.currentPageNo },
     });
+  }
+
+  viewDetails(pokemon: any): void {
+
+    //set to local storage via sharedDataService
+    this.sharedDataService.sendData(pokemon);
+    //navigate to the details page
+    this.router.navigate(['/pokemon-details'])
   }
 
   loadNextPage(): void {
