@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,10 @@ export class SharedDataService {
       this.dataSubject.next(JSON.parse(storedData));
     }
 
+  }
+
+  getData(): Observable<any> {
+    return this.dataSubject.asObservable();
   }
 
   sendData(data: any) {

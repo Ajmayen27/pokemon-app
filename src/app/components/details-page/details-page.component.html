@@ -2,18 +2,19 @@
     <div class="details-section shadow">
         <div class="grid-wrapper">
             <div class="left-div">
-                <h2>bulbasaur</h2>
+                <h2>{{pokemon.name}}</h2>
                 <div class="type-info">
-                    <p>grass</p>
-                    <p>poison</p>
+                    <div *ngFor="let types of pokemon.types">
+                        <p>{{ types.type.name }}</p>
+                    </div>
                 </div>
-                <img src="../../../assets/balbasaur.svg " alt="pokemon img" />
+                <img [src]="pokemon.sprites.other.dream_world.front_default" alt="pokemon img" />
             </div>
             <div class="right-div">
                 <h2>Pokemon Details</h2>
-                <p><strong>Experience</strong> 64 </p>
-                <p><strong>Height</strong> 7 decimeter </p>
-                <p><strong>Weight</strong> 69 hectogram </p>
+                <p><strong>Experience</strong>{{ pokemon.base_experience }} </p>
+                <p><strong>Height</strong> {{ pokemon.height }} decimeter </p>
+                <p><strong>Weight</strong> {{ pokemon.weight }} hectogram </p>
             </div>
         </div>
     </div>
@@ -22,28 +23,28 @@
         <h2>Photo Gallery</h2>
         <div class="grid-wrapper">
             <div class="cadr shadow">
-                <img src="../../../assets/balbasaur.svg" alt="image pokemon" />
+                <img [src]="pokemon.sprites.other.home.front_default" alt="image pokemon" />
             </div>
             <div class="cadr shadow">
-                <img src="../../../assets/balbasaur.svg" alt="image pokemon" />
+                <img [src]="pokemon.sprites.other.home.front_shiny" alt="image pokemon" />
             </div>
             <div class="cadr shadow">
-                <img src="../../../assets/balbasaur.svg" alt="image pokemon" />
+                <img [src]="pokemon.sprites.other.showdown.front_default" alt="image pokemon" />
             </div>
             <div class="cadr shadow">
-                <img src="../../../assets/balbasaur.svg" alt="image pokemon" />
+                <img [src]="pokemon.sprites.other.showdown.back_default" alt="image pokemon" />
             </div>
             <div class="cadr shadow">
-                <img src="../../../assets/balbasaur.svg" alt="image pokemon" />
+                <img [src]="pokemon.sprites.other.showdown.front_shiny" alt="image pokemon" />
             </div>
             <div class="cadr shadow">
-                <img src="../../../assets/balbasaur.svg" alt="image pokemon" />
+                <img [src]="pokemon.sprites.other.showdown.back_shiny" alt="image pokemon" />
             </div>
             <div class="cadr shadow">
-                <img src="../../../assets/balbasaur.svg" alt="image pokemon" />
+                <img [src]="pokemon.sprites.other?.['official-artwork'].front_default" alt="image pokemon" />
             </div>
             <div class="cadr shadow">
-                <img src="../../../assets/balbasaur.svg" alt="image pokemon" />
+                <img [src]="pokemon.sprites.other?.['official-artwork'].front_shiny" alt="image pokemon" />
             </div>
         </div>
     </div>
